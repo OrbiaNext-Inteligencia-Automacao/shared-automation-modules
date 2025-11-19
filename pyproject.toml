@@ -1,0 +1,76 @@
+[build-system]
+requires = ["setuptools>=65.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "shared-automation-modules"
+version = "0.1.0"
+description = "Shared modules for video automation pipelines"
+readme = "README.md"
+requires-python = ">=3.9"
+license = {text = "MIT"}
+authors = [
+    {name = "OrbiaNext Automation Team"}
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+]
+
+dependencies = [
+    "boto3>=1.28.0",
+    "pyyaml>=6.0",
+    "pydantic>=2.0",
+    "openai>=1.0.0",
+    "anthropic>=0.7.0",
+    "requests>=2.31.0",
+    "python-dotenv>=1.0.0",
+    "pillow>=10.0.0",
+    "numpy>=1.24.0",
+    "redis>=5.0.0",
+    "prometheus-client>=0.19.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4.0",
+    "pytest-asyncio>=0.21.0",
+    "pytest-cov>=4.1.0",
+    "black>=23.0.0",
+    "flake8>=6.0.0",
+    "mypy>=1.5.0",
+]
+tts = [
+    "TTS>=0.22.0",
+    "google-cloud-texttospeech>=2.14.0",
+    "azure-cognitiveservices-speech>=1.31.0",
+]
+video = [
+    "ffmpeg-python>=0.2.0",
+    "opencv-python>=4.8.0",
+]
+ml = [
+    "diffusers>=0.21.0",
+    "transformers>=4.33.0",
+    "torch>=2.0.0",
+]
+
+[tool.black]
+line-length = 100
+target-version = ['py39', 'py310', 'py311']
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = "-v --strict-markers"
+
+[tool.mypy]
+python_version = "3.9"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
