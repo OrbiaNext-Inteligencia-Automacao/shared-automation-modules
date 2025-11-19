@@ -42,8 +42,9 @@ dev = [
     "black>=23.0.0",
     "flake8>=6.0.0",
     "mypy>=1.5.0",
+    "isort>=5.12.0",
 ]
-tts = [
+ai = [
     "TTS>=0.22.0",
     "google-cloud-texttospeech>=2.14.0",
     "azure-cognitiveservices-speech>=1.31.0",
@@ -57,17 +58,28 @@ ml = [
     "transformers>=4.33.0",
     "torch>=2.0.0",
 ]
+all = ["ai", "video", "ml"]
 
 [tool.black]
 line-length = 100
 target-version = ['py39', 'py310', 'py311']
 
 [tool.pytest.ini_options]
-testpaths = ["tests"]
+testpaths = ["tests/unit", "tests/integration"]
 python_files = ["test_*.py"]
 python_classes = ["Test*"]
 python_functions = ["test_*"]
-addopts = "-v --strict-markers"
+addopts = "-v --strict-markers --tb=short"
+markers = [
+    "unit: Unit tests",
+    "integration: Integration tests",
+    "slow: Slow tests",
+]
+
+[tool.isort]
+profile = "black"
+line_length = 100
+skip_gitignore = true
 
 [tool.mypy]
 python_version = "3.9"

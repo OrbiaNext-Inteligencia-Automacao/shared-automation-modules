@@ -1,0 +1,41 @@
+# CODEOWNERS - Define ownership for code review
+# More info: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
+# Global fallback - tech lead reviews everything by default
+* @HaroldoYoshida
+
+# Core modules - critical infrastructure
+/src/shared_modules/core/** @HaroldoYoshida
+/src/shared_modules/config/** @HaroldoYoshida
+
+# Storage module
+/src/shared_modules/storage/** @HaroldoYoshida
+/tests/unit/test_storage*.py @HaroldoYoshida
+/tests/integration/test_storage*.py @HaroldoYoshida
+
+# AI modules - can be delegated to AI specialists
+/src/shared_modules/ai/** @HaroldoYoshida
+/tests/unit/test_ai*.py @HaroldoYoshida
+/tests/unit/test_tts*.py @HaroldoYoshida
+/tests/unit/test_llm*.py @HaroldoYoshida
+
+# Video processing - can be delegated to video specialists
+/src/shared_modules/video/** @HaroldoYoshida
+/tests/unit/test_video*.py @HaroldoYoshida
+
+# Media processing
+/src/shared_modules/media/** @HaroldoYoshida
+/tests/unit/test_media*.py @HaroldoYoshida
+
+# Monitoring/DevOps
+/src/shared_modules/monitoring/** @HaroldoYoshida
+/tests/unit/test_monitoring*.py @HaroldoYoshida
+
+# Documentation - anyone technical can review
+/docs/** @HaroldoYoshida
+*.md @HaroldoYoshida
+
+# CI/CD - requires careful review
+/.github/** @HaroldoYoshida
+/pyproject.toml @HaroldoYoshida
+/setup.py @HaroldoYoshida
